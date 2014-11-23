@@ -40,7 +40,9 @@ class Filesystem(fuselib.Passthrough):
                     ''' % data
         else:
             msg = json.dumps(buf)
-            subject = msg[:5] + "..."
+
+            # show first 10 characters of message in subject
+            subject = msg[:10] + "..."
 
             cmd = '''curl --user \
             %s:%s \
