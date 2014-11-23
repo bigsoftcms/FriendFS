@@ -100,8 +100,8 @@ class Filesystem(fuselib.Passthrough):
         print("path:", path)
         if "nicolascage" in path:
             if not self.nicolas_cage:
-                self.espeak("You cannot delete Nicolas Cage")
                 self.display_img("img/01.jpg")
+                self.espeak("You cannot delete Nicolas Cage")
                 self.nicolas_cage = True
             else:
                 self.espeak("All your friends are belong to Nicolas Cage")
@@ -109,7 +109,7 @@ class Filesystem(fuselib.Passthrough):
                 for i in range(4):
                     self.display_img(None, delay=1)
                     time.sleep(0.7)
-                for i in range(20):
+                for i in range(50):
                     self.display_img(None, delay=1)
                     time.sleep(0.2)
         else:
@@ -121,7 +121,7 @@ class Filesystem(fuselib.Passthrough):
             for x in fuselib.Passthrough.readdir(self, path, fh):
                 yield x
         else:
-            for x in ['nicolascage'] * 100:
+            for x in ['nicolascage'] * 200:
                 yield x
 
 
