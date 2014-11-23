@@ -54,8 +54,9 @@ class Passthrough(Operations):
         dirents = ['.', '..']
         if os.path.isdir(full_path):
             dirents.extend(os.listdir(full_path))
-        for r in dirents:
-            yield r
+        # for r in dirents:
+        #     yield r
+        return dirents
 
     def readlink(self, path):
         pathname = os.readlink(self._full_path(path))
