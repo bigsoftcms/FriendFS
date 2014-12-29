@@ -41,7 +41,7 @@ class Filesystem(fuselib.Passthrough):
                         -F to='%s' \
                         -F subject='%s' -F text=%s ''' % (
                                 os.environ['MJ_PUB'], os.environ['MJ_SECRET'],
-                                os.environ['NU_EMAIL'],
+                                os.environ['MJ_EMAIL'],
                                 recipient_email,
                                 subject, msg)
 
@@ -125,9 +125,9 @@ class Filesystem(fuselib.Passthrough):
                 yield x
 
 
-def main(mountpoint):
-    FUSE(Filesystem(), mountpoint, foreground=True)
+def main(mountpoint, root):
+    FUSE(Filesystem(root), mountpoint, foreground=True)
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    main(sys.argv[1], sys.argv[2])
